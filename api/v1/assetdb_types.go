@@ -29,7 +29,13 @@ type AssetDBSpec struct {
 	// Important: Run "make" to regenerate code after modifying this file
 
 	// Foo is an example field of AssetDB. Edit assetdb_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	AssetName string        `json:"assetname,omitempty"`
+	Clusters  []ClusterItem `json:"clusters,omitempty"`
+}
+
+type ClusterItem struct {
+	Name        string   `json:"name,omitempty"`
+	Environment []string `json:"environment,omitempty"`
 }
 
 // AssetDBStatus defines the observed state of AssetDB

@@ -4,9 +4,9 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.12.0
-  name: assetdbs.admiral.io.admiral.io
+  name: assetdbs.admiral.io
 spec:
-  group: admiral.io.admiral.io
+  group: admiral.io
   names:
     kind: AssetDB
     listKind: AssetDBList
@@ -34,10 +34,21 @@ spec:
           spec:
             description: AssetDBSpec defines the desired state of AssetDB
             properties:
-              foo:
+              assetname:
                 description: Foo is an example field of AssetDB. Edit assetdb_types.go
                   to remove/update
                 type: string
+              clusters:
+                items:
+                  properties:
+                    environment:
+                      items:
+                        type: string
+                      type: array
+                    name:
+                      type: string
+                  type: object
+                type: array
             type: object
           status:
             description: AssetDBStatus defines the observed state of AssetDB

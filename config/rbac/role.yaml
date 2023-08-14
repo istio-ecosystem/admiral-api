@@ -5,7 +5,7 @@ metadata:
   name: manager-role
 rules:
 - apiGroups:
-  - admiral.io.admiral.io
+  - admiral.io
   resources:
   - assetdbs
   verbs:
@@ -17,13 +17,13 @@ rules:
   - update
   - watch
 - apiGroups:
-  - admiral.io.admiral.io
+  - admiral.io
   resources:
   - assetdbs/finalizers
   verbs:
   - update
 - apiGroups:
-  - admiral.io.admiral.io
+  - admiral.io
   resources:
   - assetdbs/status
   verbs:
@@ -31,7 +31,7 @@ rules:
   - patch
   - update
 - apiGroups:
-  - admiral.io.admiral.io
+  - admiral.io
   resources:
   - shards
   verbs:
@@ -43,13 +43,13 @@ rules:
   - update
   - watch
 - apiGroups:
-  - admiral.io.admiral.io
+  - admiral.io
   resources:
   - shards/finalizers
   verbs:
   - update
 - apiGroups:
-  - admiral.io.admiral.io
+  - admiral.io
   resources:
   - shards/status
   verbs:

@@ -29,7 +29,17 @@ type ShardSpec struct {
 	// Important: Run "make" to regenerate code after modifying this file
 
 	// Foo is an example field of Shard. Edit shard_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	Clusters []ClusterShards `json:"clusters,omitempty"`
+}
+
+type ClusterShards struct {
+	Name   string      `json:"name,omitempty"`
+	Assets []AssetItem `json:"assets,omitempty"`
+}
+
+type AssetItem struct {
+	Name        string `json:"name,omitempty"`
+	Environment string `json:"environment,omitempty"`
 }
 
 // ShardStatus defines the observed state of Shard

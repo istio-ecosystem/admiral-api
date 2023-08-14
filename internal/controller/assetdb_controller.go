@@ -33,9 +33,9 @@ type AssetDBReconciler struct {
 	Scheme *runtime.Scheme
 }
 
-//+kubebuilder:rbac:groups=admiral.io.admiral.io,resources=assetdbs,verbs=get;list;watch;create;update;patch;delete
-//+kubebuilder:rbac:groups=admiral.io.admiral.io,resources=assetdbs/status,verbs=get;update;patch
-//+kubebuilder:rbac:groups=admiral.io.admiral.io,resources=assetdbs/finalizers,verbs=update
+//+kubebuilder:rbac:groups=admiral.io,resources=assetdbs,verbs=get;list;watch;create;update;patch;delete
+//+kubebuilder:rbac:groups=admiral.io,resources=assetdbs/status,verbs=get;update;patch
+//+kubebuilder:rbac:groups=admiral.io,resources=assetdbs/finalizers,verbs=update
 
 // Reconcile is part of the main kubernetes reconciliation loop which aims to
 // move the current state of the cluster closer to the desired state.

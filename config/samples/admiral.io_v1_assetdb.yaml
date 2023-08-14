@@ -1,4 +1,4 @@
-apiVersion: admiral.io.admiral.io/v1
+apiVersion: admiral.io/v1
 kind: AssetDB
 metadata:
   labels:

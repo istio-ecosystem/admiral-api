@@ -4,9 +4,9 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.12.0
-  name: shards.admiral.io.admiral.io
+  name: shards.admiral.io
 spec:
-  group: admiral.io.admiral.io
+  group: admiral.io
   names:
     kind: Shard
     listKind: ShardList
@@ -34,10 +34,24 @@ spec:
           spec:
             description: ShardSpec defines the desired state of Shard
             properties:
-              foo:
+              clusters:
                 description: Foo is an example field of Shard. Edit shard_types.go
                   to remove/update
-                type: string
+                items:
+                  properties:
+                    assets:
+                      items:
+                        properties:
+                          environment:
+                            type: string
+                          name:
+                            type: string
+                        type: object
+                      type: array
+                    name:
+                      type: string
+                  type: object
+                type: array
             type: object
           status:
             description: ShardStatus defines the observed state of Shard
