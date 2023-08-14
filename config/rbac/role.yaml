@@ -1,0 +1,58 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: manager-role
+rules:
+- apiGroups:
+  - admiral.io.admiral.io
+  resources:
+  - assetdbs
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - admiral.io.admiral.io
+  resources:
+  - assetdbs/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - admiral.io.admiral.io
+  resources:
+  - assetdbs/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - admiral.io.admiral.io
+  resources:
+  - shards
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - admiral.io.admiral.io
+  resources:
+  - shards/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - admiral.io.admiral.io
+  resources:
+  - shards/status
+  verbs:
+  - get
+  - patch
+  - update

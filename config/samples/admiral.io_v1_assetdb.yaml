@@ -1,0 +1,12 @@
+apiVersion: admiral.io.admiral.io/v1
+kind: AssetDB
+metadata:
+  labels:
+    app.kubernetes.io/name: assetdb
+    app.kubernetes.io/instance: assetdb-sample
+    app.kubernetes.io/part-of: admiral-api
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: admiral-api
+  name: assetdb-sample
+spec:
+  # TODO(user): Add fields here

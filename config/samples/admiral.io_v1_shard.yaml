@@ -1,0 +1,12 @@
+apiVersion: admiral.io.admiral.io/v1
+kind: Shard
+metadata:
+  labels:
+    app.kubernetes.io/name: shard
+    app.kubernetes.io/instance: shard-sample
+    app.kubernetes.io/part-of: admiral-api
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: admiral-api
+  name: shard-sample
+spec:
+  # TODO(user): Add fields here
