@@ -33,9 +33,9 @@ type ShardReconciler struct {
 	Scheme *runtime.Scheme
 }
 
-//+kubebuilder:rbac:groups=admiral.io.admiral.io,resources=shards,verbs=get;list;watch;create;update;patch;delete
-//+kubebuilder:rbac:groups=admiral.io.admiral.io,resources=shards/status,verbs=get;update;patch
-//+kubebuilder:rbac:groups=admiral.io.admiral.io,resources=shards/finalizers,verbs=update
+//+kubebuilder:rbac:groups=admiral.io,resources=shards,verbs=get;list;watch;create;update;patch;delete
+//+kubebuilder:rbac:groups=admiral.io,resources=shards/status,verbs=get;update;patch
+//+kubebuilder:rbac:groups=admiral.io,resources=shards/finalizers,verbs=update
 
 // Reconcile is part of the main kubernetes reconciliation loop which aims to
 // move the current state of the cluster closer to the desired state.

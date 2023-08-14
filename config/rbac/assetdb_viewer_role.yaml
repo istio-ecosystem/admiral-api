@@ -12,7 +12,7 @@ metadata:
   name: assetdb-viewer-role
 rules:
 - apiGroups:
-  - admiral.io.admiral.io
+  - admiral.io
   resources:
   - assetdbs
   verbs:
@@ -20,7 +20,7 @@ rules:
   - list
   - watch
 - apiGroups:
-  - admiral.io.admiral.io
+  - admiral.io
   resources:
   - assetdbs/status
   verbs:
