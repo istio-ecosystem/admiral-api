@@ -1,0 +1,5 @@
+## Append samples of your project ##
+resources:
+- admiral.io_v1_assetdb.yaml
+- admiral.io_v1_shard.yaml
+#+kubebuilder:scaffold:manifestskustomizesamples
