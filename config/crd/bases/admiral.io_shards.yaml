@@ -35,8 +35,6 @@ spec:
             description: ShardSpec defines the desired state of Shard
             properties:
               clusters:
-                description: Foo is an example field of Shard. Edit shard_types.go
-                  to remove/update
                 items:
                   properties:
                     assets:
