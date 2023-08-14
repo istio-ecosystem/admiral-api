@@ -35,8 +35,6 @@ spec:
             description: ShardSpec defines the desired state of Shard
             properties:
               clusters:
-                description: Foo is an example field of Shard. Edit shard_types.go
-                  to remove/update
                 items:
                   properties:
                     assets:
@@ -55,6 +53,17 @@ spec:
             type: object
           status:
             description: ShardStatus defines the observed state of Shard
+            properties:
+              workers:
+                description: 'INSERT ADDITIONAL STATUS FIELD - define observed state
+                  of cluster Important: Run "make" to regenerate code after modifying
+                  this file'
+                items:
+                  properties:
+                    name:
+                      type: string
+                  type: object
+                type: array
             type: object
         type: object
     served: true
