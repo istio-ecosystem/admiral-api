@@ -28,16 +28,15 @@ type ShardSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	// Foo is an example field of Shard. Edit shard_types.go to remove/update
 	Clusters []ClusterShards `json:"clusters,omitempty"`
 }
 
 type ClusterShards struct {
-	Name   string      `json:"name,omitempty"`
-	Assets []AssetItem `json:"assets,omitempty"`
+	Name   string  `json:"name,omitempty"`
+	Assets []Asset `json:"assets,omitempty"`
 }
 
-type AssetItem struct {
+type Asset struct {
 	Name        string `json:"name,omitempty"`
 	Environment string `json:"environment,omitempty"`
 }
@@ -46,6 +45,11 @@ type AssetItem struct {
 type ShardStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
+	Workers []Worker `json:"workers,omitempty"`
+}
+
+type Worker struct {
+	Name string `json:"name,omitempty"`
 }
 
 //+kubebuilder:object:root=true

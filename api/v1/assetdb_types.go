@@ -28,12 +28,11 @@ type AssetDBSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	// Foo is an example field of AssetDB. Edit assetdb_types.go to remove/update
-	AssetName string        `json:"assetname,omitempty"`
-	Clusters  []ClusterItem `json:"clusters,omitempty"`
+	AssetName string    `json:"assetname,omitempty"`
+	Clusters  []Cluster `json:"clusters,omitempty"`
 }
 
-type ClusterItem struct {
+type Cluster struct {
 	Name        string   `json:"name,omitempty"`
 	Environment []string `json:"environment,omitempty"`
 }
