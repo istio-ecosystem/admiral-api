@@ -6,7 +6,7 @@ domain: admiral.io
 layout:
 - go.kubebuilder.io/v4
 projectName: admiral-api
-repo: admiral.io/admiral-api
+repo: github.com/istio-ecosystem/admiral-api
 resources:
 - api:
     crdVersion: v1
@@ -15,7 +15,7 @@ resources:
   domain: admiral.io
   group: admiral.io
   kind: AssetDB
-  path: admiral.io/admiral-api/api/v1
+  path: github.com/istio-ecosystem/admiral-api/api/v1
   version: v1
 - api:
     crdVersion: v1
@@ -24,6 +24,6 @@ resources:
   domain: admiral.io
   group: admiral.io
   kind: Shard
-  path: admiral.io/admiral-api/api/v1
+  path: github.com/istio-ecosystem/admiral-api/api/v1
   version: v1
 version: "3"

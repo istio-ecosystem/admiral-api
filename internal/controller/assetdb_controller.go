@@ -24,7 +24,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/log"
 
-	admiraliov1 "admiral.io/admiral-api/api/v1"
+	admiraliov1 "github.com/istio-ecosystem/admiral-api/api/v1"
 )
 
 // AssetDBReconciler reconciles a AssetDB object
