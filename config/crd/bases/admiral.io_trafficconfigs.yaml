@@ -1,0 +1,423 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.14.0
+  name: trafficconfigs.admiral.io
+spec:
+  group: admiral.io
+  names:
+    kind: TrafficConfig
+    listKind: TrafficConfigList
+    plural: trafficconfigs
+    singular: trafficconfig
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: TrafficConfig is the Schema for the trafficconfigs API
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            properties:
+              edgeService:
+                properties:
+                  dynamicRouting:
+                    items:
+                      properties:
+                        cacheKeyAlgorithm:
+                          type: string
+                        local:
+                          type: boolean
+                        name:
+                          type: string
+                        ttlSec:
+                          type: integer
+                        url:
+                          type: string
+                      required:
+                      - cacheKeyAlgorithm
+                      - local
+                      - name
+                      - ttlSec
+                      - url
+                      type: object
+                    type: array
+                  filters:
+                    items:
+                      properties:
+                        name:
+                          type: string
+                        options:
+                          items:
+                            type: string
+                          type: array
+                        retries:
+                          properties:
+                            attempts:
+                              type: integer
+                            perTryTimeout:
+                              type: string
+                          required:
+                          - attempts
+                          - perTryTimeout
+                          type: object
+                      required:
+                      - name
+                      - options
+                      - retries
+                      type: object
+                    type: array
+                  routes:
+                    items:
+                      properties:
+                        config:
+                          items:
+                            properties:
+                              targetGroupSelector:
+                                type: string
+                              targetSelector:
+                                type: string
+                            required:
+                            - targetGroupSelector
+                            - targetSelector
+                            type: object
+                          type: array
+                        filterSelector:
+                          type: string
+                        inbound:
+                          type: string
+                        name:
+                          type: string
+                        outbound:
+                          type: string
+                        timeout:
+                          type: integer
+                        workloadEnvSelectors:
+                          items:
+                            type: string
+                          type: array
+                      required:
+                      - config
+                      - filterSelector
+                      - inbound
+                      - name
+                      - outbound
+                      - timeout
+                      - workloadEnvSelectors
+                      type: object
+                    type: array
+                  targetGroups:
+                    items:
+                      properties:
+                        appOverrides:
+                          items:
+                            properties:
+                              assetAlias:
+                                type: string
+                              assetID:
+                                type: string
+                              weights:
+                                items:
+                                  properties:
+                                    name:
+                                      type: string
+                                    weight:
+                                      type: integer
+                                  required:
+                                  - name
+                                  - weight
+                                  type: object
+                                type: array
+                            required:
+                            - assetAlias
+                            - assetID
+                            - weights
+                            type: object
+                          type: array
+                        name:
+                          type: string
+                        weights:
+                          items:
+                            properties:
+                              name:
+                                type: string
+                              weight:
+                                type: integer
+                            required:
+                            - name
+                            - weight
+                            type: object
+                          type: array
+                      required:
+                      - appOverrides
+                      - name
+                      - weights
+                      type: object
+                    type: array
+                  targets:
+                    items:
+                      properties:
+                        dns:
+                          type: string
+                        meshDNS:
+                          type: string
+                        name:
+                          type: string
+                        port:
+                          type: integer
+                        socketTimeout:
+                          type: integer
+                      required:
+                      - dns
+                      - meshDNS
+                      - name
+                      - port
+                      - socketTimeout
+                      type: object
+                    type: array
+                required:
+                - dynamicRouting
+                - filters
+                - routes
+                - targetGroups
+                - targets
+                type: object
+              quotaGroup:
+                properties:
+                  appQuotaGroups:
+                    items:
+                      properties:
+                        associatedApps:
+                          items:
+                            type: string
+                          type: array
+                        description:
+                          type: string
+                        name:
+                          type: string
+                        quotas:
+                          items:
+                            properties:
+                              algorithm:
+                                type: string
+                              behaviour:
+                                type: string
+                              headers:
+                                items:
+                                  properties:
+                                    condition:
+                                      type: string
+                                    name:
+                                      type: string
+                                    value:
+                                      type: string
+                                  required:
+                                  - condition
+                                  - name
+                                  - value
+                                  type: object
+                                type: array
+                              keyType:
+                                type: string
+                              maxAmount:
+                                type: integer
+                              methods:
+                                items:
+                                  type: string
+                                type: array
+                              name:
+                                type: string
+                              path:
+                                type: string
+                              rule:
+                                type: string
+                              timePeriod:
+                                type: string
+                            required:
+                            - algorithm
+                            - behaviour
+                            - keyType
+                            - maxAmount
+                            - name
+                            - rule
+                            - timePeriod
+                            type: object
+                          type: array
+                        workloadEnvSelectors:
+                          items:
+                            type: string
+                          type: array
+                      required:
+                      - associatedApps
+                      - description
+                      - name
+                      - quotas
+                      - workloadEnvSelectors
+                      type: object
+                    type: array
+                  totalQuotaGroups:
+                    items:
+                      properties:
+                        adaptiveConcurrency:
+                          properties:
+                            concurrencyUpdateInterval:
+                              type: string
+                            enabled:
+                              type: boolean
+                            latencyThreshold:
+                              type: string
+                            minRTTCalInterval:
+                              type: string
+                            minRTTCalJitter:
+                              type: integer
+                            minRTTCalMinConcurrency:
+                              type: integer
+                            minRTTCalRequestCount:
+                              type: integer
+                            sampleAggregatePercentile:
+                              type: integer
+                            skippedURLs:
+                              items:
+                                type: string
+                              type: array
+                          required:
+                          - concurrencyUpdateInterval
+                          - enabled
+                          - latencyThreshold
+                          - minRTTCalInterval
+                          - minRTTCalJitter
+                          - minRTTCalMinConcurrency
+                          - minRTTCalRequestCount
+                          - sampleAggregatePercentile
+                          - skippedURLs
+                          type: object
+                        cpuLimit:
+                          type: integer
+                        description:
+                          type: string
+                        failureModeBehaviour:
+                          type: string
+                        memoryLimit:
+                          type: integer
+                        name:
+                          type: string
+                        podLevelThreshold:
+                          type: integer
+                        quotas:
+                          items:
+                            properties:
+                              algorithm:
+                                type: string
+                              behaviour:
+                                type: string
+                              headers:
+                                items:
+                                  properties:
+                                    condition:
+                                      type: string
+                                    name:
+                                      type: string
+                                    value:
+                                      type: string
+                                  required:
+                                  - condition
+                                  - name
+                                  - value
+                                  type: object
+                                type: array
+                              keyType:
+                                type: string
+                              maxAmount:
+                                type: integer
+                              methods:
+                                items:
+                                  type: string
+                                type: array
+                              name:
+                                type: string
+                              path:
+                                type: string
+                              rule:
+                                type: string
+                              timePeriod:
+                                type: string
+                            required:
+                            - algorithm
+                            - behaviour
+                            - keyType
+                            - maxAmount
+                            - name
+                            - rule
+                            - timePeriod
+                            type: object
+                          type: array
+                        regionLevelLimit:
+                          type: boolean
+                        workloadEnvSelectors:
+                          items:
+                            type: string
+                          type: array
+                      required:
+                      - description
+                      - failureModeBehaviour
+                      - name
+                      - podLevelThreshold
+                      - quotas
+                      - regionLevelLimit
+                      - workloadEnvSelectors
+                      type: object
+                    type: array
+                required:
+                - totalQuotaGroups
+                type: object
+              workloadEnvs:
+                items:
+                  type: string
+                type: array
+            required:
+            - edgeService
+            - quotaGroup
+            - workloadEnvs
+            type: object
+          status:
+            description: TrafficConfigStatus defines the observed state of TrafficConfig
+            properties:
+              lastAppliedConfigVersion:
+                type: string
+              lastUpdateTime:
+                format: date-time
+                type: string
+              message:
+                type: string
+              status:
+                type: boolean
+            required:
+            - lastAppliedConfigVersion
+            - lastUpdateTime
+            - message
+            - status
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
