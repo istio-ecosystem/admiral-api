@@ -31,8 +31,8 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/healthz"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
-	admiraliov1 "admiral.io/admiral-api/api/v1"
-	"admiral.io/admiral-api/internal/controller"
+	admiraliov1 "github.com/istio-ecosystem/admiral-api/api/v1"
+	"github.com/istio-ecosystem/admiral-api/internal/controller"
 	//+kubebuilder:scaffold:imports
 )
 

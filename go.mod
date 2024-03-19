@@ -1,4 +1,4 @@
-module admiral.io/admiral-api
+module github.com/istio-ecosystem/admiral-api
 
 go 1.20
 
