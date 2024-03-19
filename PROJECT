@@ -15,7 +15,7 @@ resources:
   domain: admiral.io
   group: admiral.io
   kind: AssetDB
-  path: github.com/istio-ecosystem/admiral-api/api/v1
+  path: github.com/istio-ecosystem/admiral-api/pkg/apis/admiral/v1
   version: v1
 - api:
     crdVersion: v1
@@ -24,6 +24,6 @@ resources:
   domain: admiral.io
   group: admiral.io
   kind: Shard
-  path: github.com/istio-ecosystem/admiral-api/api/v1
+  path: github.com/istio-ecosystem/admiral-api/pkg/apis/admiral/v1
   version: v1
 version: "3"

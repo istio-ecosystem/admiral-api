@@ -30,7 +30,7 @@ import (
 	logf "sigs.k8s.io/controller-runtime/pkg/log"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
-	admiraliov1 "github.com/istio-ecosystem/admiral-api/api/v1"
+	admiraliov1 "github.com/istio-ecosystem/admiral-api/pkg/apis/admiral/v1"
 	//+kubebuilder:scaffold:imports
 )
 

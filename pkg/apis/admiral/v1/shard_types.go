@@ -20,15 +20,31 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-// EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
-// NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
+// +kubebuilder:object:root=true
+// +kubebuilder:subresource:status
+// +genclient
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// Shard is the Schema for the shards API
+type Shard struct {
+	metav1.TypeMeta   `json:",inline"`
+	metav1.ObjectMeta `json:"metadata,omitempty"`
+
+	Spec   ShardSpec   `json:"spec,omitempty"`
+	Status ShardStatus `json:"status,omitempty"`
+}
+
+// +kubebuilder:object:root=true
+// +genclient
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// ShardList contains a list of Shard
+type ShardList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata,omitempty"`
+	Items           []Shard `json:"items"`
+}
 
 // ShardSpec defines the desired state of Shard
 type ShardSpec struct {
-	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
-
-	// Foo is an example field of Shard. Edit shard_types.go to remove/update
 	Clusters []ClusterShards `json:"clusters,omitempty"`
 }
 
@@ -46,29 +62,4 @@ type AssetItem struct {
 type ShardStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
-}
-
-//+kubebuilder:object:root=true
-//+kubebuilder:subresource:status
-
-// Shard is the Schema for the shards API
-type Shard struct {
-	metav1.TypeMeta   `json:",inline"`
-	metav1.ObjectMeta `json:"metadata,omitempty"`
-
-	Spec   ShardSpec   `json:"spec,omitempty"`
-	Status ShardStatus `json:"status,omitempty"`
-}
-
-//+kubebuilder:object:root=true
-
-// ShardList contains a list of Shard
-type ShardList struct {
-	metav1.TypeMeta `json:",inline"`
-	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []Shard `json:"items"`
-}
-
-func init() {
-	SchemeBuilder.Register(&Shard{}, &ShardList{})
 }

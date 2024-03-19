@@ -4,8 +4,8 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-// +kubebuilder:object:root=true
-// +kubebuilder:subresource:status
+// +genclient
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // TrafficConfig is the Schema for the trafficconfigs API
 type TrafficConfig struct {
 	metav1.TypeMeta   `json:",inline"`
@@ -16,7 +16,8 @@ type TrafficConfig struct {
 	Status TrafficConfigStatus `json:"status,omitempty"`
 }
 
-// +kubebuilder:object:root=true
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
 // TrafficConfigList contains a list of TrafficConfig
 type TrafficConfigList struct {
 	metav1.TypeMeta `json:",inline"`
@@ -159,8 +160,4 @@ type TrafficConfigStatus struct {
 	LastAppliedConfigVersion string      `json:"lastAppliedConfigVersion"`
 	LastUpdateTime           metav1.Time `json:"lastUpdateTime"`
 	Status                   bool        `json:"status"`
-}
-
-func init() {
-	SchemeBuilder.Register(&TrafficConfig{}, &TrafficConfigList{})
 }
