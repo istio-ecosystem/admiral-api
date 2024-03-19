@@ -40,8 +40,6 @@ spec:
             description: AssetDBSpec defines the desired state of AssetDB
             properties:
               assetname:
-                description: Foo is an example field of AssetDB. Edit assetdb_types.go
-                  to remove/update
                 type: string
               clusters:
                 items:

@@ -41,6 +41,10 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		SchemeGroupVersion,
 		&TrafficConfig{},
 		&TrafficConfigList{},
+		&Shard{},
+		&ShardList{},
+		&AssetDB{},
+		&AssetDBList{},
 	)
 
 	// register the type in the scheme

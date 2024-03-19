@@ -32,7 +32,7 @@ type TrafficConfigSpec struct {
 }
 
 type EdgeService struct {
-	DynamicRouting []*DynamicRouting `json:"dynamicRouting"`
+	DynamicRouting []*DynamicRouting `json:"dynamicRouting,omitempty"`
 	Filters        []*Filter         `json:"filters"`
 	Routes         []*Route          `json:"routes"`
 	Targets        []*Target         `json:"targets"`
@@ -41,7 +41,7 @@ type EdgeService struct {
 
 type Target struct {
 	Name          string `json:"name"`
-	DNS           string `json:"dns"`
+	DNS           string `json:"dns,omitempty"`
 	MeshDNS       string `json:"meshDNS"`
 	Port          int    `json:"port"`
 	SocketTimeout int    `json:"socketTimeout"`
@@ -50,7 +50,7 @@ type Target struct {
 type TargetGroup struct {
 	Name         string         `json:"name"`
 	Weights      []*Weight      `json:"weights"`
-	AppOverrides []*AppOverride `json:"appOverrides"`
+	AppOverrides []*AppOverride `json:"appOverrides,omitempty"`
 }
 
 type AppOverride struct {
@@ -86,8 +86,8 @@ type Config struct {
 
 type Filter struct {
 	Name    string   `json:"name"`
-	Retries Retry    `json:"retries"`
-	Options []string `json:"options"`
+	Retries Retry    `json:"retries,omitempty"`
+	Options []string `json:"options,omitempty"`
 }
 
 type Retry struct {
@@ -108,11 +108,11 @@ type TotalQuotaGroup struct {
 	Description          string               `json:"description"`
 	Quotas               []*Quota             `json:"quotas"`
 	WorkloadEnvSelectors []string             `json:"workloadEnvSelectors"`
-	RegionLevelLimit     bool                 `json:"regionLevelLimit"`
+	RegionLevelLimit     bool                 `json:"regionLevelLimit,omitempty"`
 	CPULimit             *int                 `json:"cpuLimit,omitempty"`
 	MemoryLimit          *int                 `json:"memoryLimit,omitempty"`
-	PodLevelThreshold    *int                 `json:"podLevelThreshold"`
-	FailureModeBehaviour string               `json:"failureModeBehaviour"`
+	PodLevelThreshold    *int                 `json:"podLevelThreshold,omitempty"`
+	FailureModeBehaviour string               `json:"failureModeBehaviour,omitempty"`
 	AdaptiveConcurrency  *AdaptiveConcurrency `json:"adaptiveConcurrency,omitempty"`
 }
 type AppQuotaGroup struct {
@@ -139,10 +139,10 @@ type Quota struct {
 	Name       string    `json:"name"`
 	TimePeriod string    `json:"timePeriod"`
 	MaxAmount  int       `json:"maxAmount"`
-	KeyType    string    `json:"keyType"`
-	Algorithm  string    `json:"algorithm"`
-	Behaviour  string    `json:"behaviour"`
-	Rule       string    `json:"rule"`
+	KeyType    string    `json:"keyType,omitempty"`
+	Algorithm  string    `json:"algorithm,omitempty"`
+	Behaviour  string    `json:"behaviour,omitempty"`
+	Rule       string    `json:"rule,omitempty"`
 	Path       string    `json:"path,omitempty"`
 	Methods    []string  `json:"methods,omitempty"`
 	Headers    []*Header `json:"headers,omitempty"`
