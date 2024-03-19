@@ -26,14 +26,10 @@ import (
 type Interface interface {
 	// AssetDBs returns a AssetDBInformer.
 	AssetDBs() AssetDBInformer
-	// AssetDBLists returns a AssetDBListInformer.
-	AssetDBLists() AssetDBListInformer
 	// Dependencies returns a DependencyInformer.
 	Dependencies() DependencyInformer
 	// Shards returns a ShardInformer.
 	Shards() ShardInformer
-	// ShardLists returns a ShardListInformer.
-	ShardLists() ShardListInformer
 	// TrafficConfigs returns a TrafficConfigInformer.
 	TrafficConfigs() TrafficConfigInformer
 }
@@ -54,11 +50,6 @@ func (v *version) AssetDBs() AssetDBInformer {
 	return &assetDBInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
-// AssetDBLists returns a AssetDBListInformer.
-func (v *version) AssetDBLists() AssetDBListInformer {
-	return &assetDBListInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
-}
-
 // Dependencies returns a DependencyInformer.
 func (v *version) Dependencies() DependencyInformer {
 	return &dependencyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -67,11 +58,6 @@ func (v *version) Dependencies() DependencyInformer {
 // Shards returns a ShardInformer.
 func (v *version) Shards() ShardInformer {
 	return &shardInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
-}
-
-// ShardLists returns a ShardListInformer.
-func (v *version) ShardLists() ShardListInformer {
-	return &shardListInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // TrafficConfigs returns a TrafficConfigInformer.

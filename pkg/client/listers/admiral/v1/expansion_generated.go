@@ -26,14 +26,6 @@ type AssetDBListerExpansion interface{}
 // AssetDBNamespaceLister.
 type AssetDBNamespaceListerExpansion interface{}
 
-// AssetDBListListerExpansion allows custom methods to be added to
-// AssetDBListLister.
-type AssetDBListListerExpansion interface{}
-
-// AssetDBListNamespaceListerExpansion allows custom methods to be added to
-// AssetDBListNamespaceLister.
-type AssetDBListNamespaceListerExpansion interface{}
-
 // DependencyListerExpansion allows custom methods to be added to
 // DependencyLister.
 type DependencyListerExpansion interface{}
@@ -49,14 +41,6 @@ type ShardListerExpansion interface{}
 // ShardNamespaceListerExpansion allows custom methods to be added to
 // ShardNamespaceLister.
 type ShardNamespaceListerExpansion interface{}
-
-// ShardListListerExpansion allows custom methods to be added to
-// ShardListLister.
-type ShardListListerExpansion interface{}
-
-// ShardListNamespaceListerExpansion allows custom methods to be added to
-// ShardListNamespaceLister.
-type ShardListNamespaceListerExpansion interface{}
 
 // TrafficConfigListerExpansion allows custom methods to be added to
 // TrafficConfigLister.

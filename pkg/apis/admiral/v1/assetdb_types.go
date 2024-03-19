@@ -33,8 +33,6 @@ type AssetDB struct {
 	Status AssetDBStatus `json:"status,omitempty"`
 }
 
-// +kubebuilder:object:root=true
-// +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // AssetDBList contains a list of AssetDB
 type AssetDBList struct {

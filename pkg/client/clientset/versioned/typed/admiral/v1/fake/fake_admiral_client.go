@@ -32,20 +32,12 @@ func (c *FakeAdmiralV1) AssetDBs(namespace string) v1.AssetDBInterface {
 	return &FakeAssetDBs{c, namespace}
 }
 
-func (c *FakeAdmiralV1) AssetDBLists(namespace string) v1.AssetDBListInterface {
-	return &FakeAssetDBLists{c, namespace}
-}
-
 func (c *FakeAdmiralV1) Dependencies(namespace string) v1.DependencyInterface {
 	return &FakeDependencies{c, namespace}
 }
 
 func (c *FakeAdmiralV1) Shards(namespace string) v1.ShardInterface {
 	return &FakeShards{c, namespace}
-}
-
-func (c *FakeAdmiralV1) ShardLists(namespace string) v1.ShardListInterface {
-	return &FakeShardLists{c, namespace}
 }
 
 func (c *FakeAdmiralV1) TrafficConfigs(namespace string) v1.TrafficConfigInterface {

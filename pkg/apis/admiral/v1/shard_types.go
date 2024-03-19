@@ -33,8 +33,6 @@ type Shard struct {
 	Status ShardStatus `json:"status,omitempty"`
 }
 
-// +kubebuilder:object:root=true
-// +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // ShardList contains a list of Shard
 type ShardList struct {

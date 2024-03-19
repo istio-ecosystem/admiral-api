@@ -55,14 +55,10 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 	// Group=admiral.io, Version=v1
 	case v1.SchemeGroupVersion.WithResource("assetdbs"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Admiral().V1().AssetDBs().Informer()}, nil
-	case v1.SchemeGroupVersion.WithResource("assetdblists"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Admiral().V1().AssetDBLists().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("dependencies"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Admiral().V1().Dependencies().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("shards"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Admiral().V1().Shards().Informer()}, nil
-	case v1.SchemeGroupVersion.WithResource("shardlists"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Admiral().V1().ShardLists().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("trafficconfigs"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Admiral().V1().TrafficConfigs().Informer()}, nil
 

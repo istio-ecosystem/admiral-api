@@ -20,12 +20,8 @@ package v1
 
 type AssetDBExpansion interface{}
 
-type AssetDBListExpansion interface{}
-
 type DependencyExpansion interface{}
 
 type ShardExpansion interface{}
-
-type ShardListExpansion interface{}
 
 type TrafficConfigExpansion interface{}

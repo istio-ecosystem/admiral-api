@@ -29,10 +29,8 @@ import (
 type AdmiralV1Interface interface {
 	RESTClient() rest.Interface
 	AssetDBsGetter
-	AssetDBListsGetter
 	DependenciesGetter
 	ShardsGetter
-	ShardListsGetter
 	TrafficConfigsGetter
 }
 
@@ -45,20 +43,12 @@ func (c *AdmiralV1Client) AssetDBs(namespace string) AssetDBInterface {
 	return newAssetDBs(c, namespace)
 }
 
-func (c *AdmiralV1Client) AssetDBLists(namespace string) AssetDBListInterface {
-	return newAssetDBLists(c, namespace)
-}
-
 func (c *AdmiralV1Client) Dependencies(namespace string) DependencyInterface {
 	return newDependencies(c, namespace)
 }
 
 func (c *AdmiralV1Client) Shards(namespace string) ShardInterface {
 	return newShards(c, namespace)
-}
-
-func (c *AdmiralV1Client) ShardLists(namespace string) ShardListInterface {
-	return newShardLists(c, namespace)
 }
 
 func (c *AdmiralV1Client) TrafficConfigs(namespace string) TrafficConfigInterface {
