@@ -4,20 +4,19 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.14.0
-  name: shards.admiral.io
+  name: dependencies.admiral.io
 spec:
   group: admiral.io
   names:
-    kind: Shard
-    listKind: ShardList
-    plural: shards
-    singular: shard
+    kind: Dependency
+    listKind: DependencyList
+    plural: dependencies
+    singular: dependency
   scope: Namespaced
   versions:
   - name: v1
     schema:
       openAPIV3Schema:
-        description: Shard is the Schema for the shards API
         properties:
           apiVersion:
             description: |-
@@ -37,30 +36,30 @@ spec:
           metadata:
             type: object
           spec:
-            description: ShardSpec defines the desired state of Shard
             properties:
-              clusters:
+              destinations:
                 items:
-                  properties:
-                    assets:
-                      items:
-                        properties:
-                          environment:
-                            type: string
-                          name:
-                            type: string
-                        type: object
-                      type: array
-                    name:
-                      type: string
-                  type: object
+                  type: string
                 type: array
+              identityLabel:
+                type: string
+              source:
+                type: string
             type: object
           status:
-            description: ShardStatus defines the observed state of Shard
+            properties:
+              clustersSynced:
+                format: int32
+                type: integer
+              state:
+                type: string
+            required:
+            - clustersSynced
+            - state
             type: object
+        required:
+        - metadata
+        - spec
         type: object
     served: true
     storage: true
-    subresources:
-      status: {}

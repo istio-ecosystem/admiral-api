@@ -82,8 +82,6 @@ spec:
                           type: object
                       required:
                       - name
-                      - options
-                      - retries
                       type: object
                     type: array
                   routes:
@@ -168,7 +166,6 @@ spec:
                             type: object
                           type: array
                       required:
-                      - appOverrides
                       - name
                       - weights
                       type: object
@@ -187,7 +184,6 @@ spec:
                         socketTimeout:
                           type: integer
                       required:
-                      - dns
                       - meshDNS
                       - name
                       - port
@@ -195,7 +191,6 @@ spec:
                       type: object
                     type: array
                 required:
-                - dynamicRouting
                 - filters
                 - routes
                 - targetGroups
@@ -253,12 +248,8 @@ spec:
                               timePeriod:
                                 type: string
                             required:
-                            - algorithm
-                            - behaviour
-                            - keyType
                             - maxAmount
                             - name
-                            - rule
                             - timePeriod
                             type: object
                           type: array
@@ -361,12 +352,8 @@ spec:
                               timePeriod:
                                 type: string
                             required:
-                            - algorithm
-                            - behaviour
-                            - keyType
                             - maxAmount
                             - name
-                            - rule
                             - timePeriod
                             type: object
                           type: array
@@ -378,11 +365,8 @@ spec:
                           type: array
                       required:
                       - description
-                      - failureModeBehaviour
                       - name
-                      - podLevelThreshold
                       - quotas
-                      - regionLevelLimit
                       - workloadEnvSelectors
                       type: object
                     type: array
@@ -419,5 +403,3 @@ spec:
         type: object
     served: true
     storage: true
-    subresources:
-      status: {}

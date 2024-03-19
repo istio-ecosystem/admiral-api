@@ -8,7 +8,7 @@ type Dependency struct {
 	v1.TypeMeta   `json:",inline"`
 	v1.ObjectMeta `json:"metadata"`
 	Spec          DependencySpec   `json:"spec"`
-	Status        DependencyStatus `json:"status"`
+	Status        DependencyStatus `json:"status,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
