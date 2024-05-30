@@ -46,18 +46,80 @@ type ShardSpec struct {
 	Clusters []ClusterShards `json:"clusters,omitempty"`
 }
 
+// clusters defines list of clusters monitored by the shard
+// This includes cluster name, locality and list of cluster identities for which resources need to be managed
 type ClusterShards struct {
-	Name   string      `json:"name,omitempty"`
-	Assets []AssetItem `json:"assets,omitempty"`
+	Name       string         `json:"name,omitempty"`
+	Locality   string         `json:"locality,omitempty"`
+	Identities []IdentityItem `json:"identities,omitempty"`
 }
 
-type AssetItem struct {
+type IdentityItem struct {
 	Name        string `json:"name,omitempty"`
 	Environment string `json:"environment,omitempty"`
 }
 
 // ShardStatus defines the observed state of Shard
 type ShardStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
+	ClustersMonitored int                    `json:"clustersMonitored,omitempty"`
+	Conditions        []ShardStatusCondition `json:"conditions,omitempty"`
+	FailureDetails    FailureDetails         `json:"failureDetails,omitempty"`
+	LastUpdatedTime   metav1.Time            `json:"lastUpdateTime,omitempty"`
+}
+
+type ConditionStatus string
+
+const (
+	TrueConditionStatus  ConditionStatus = "true"
+	FalseConditionStatus ConditionStatus = "false"
+)
+
+type ConditionType string
+
+const (
+	SyncComplete ConditionType = "SyncComplete"
+	SyncFailed   ConditionType = "SyncFailed"
+)
+
+type ConditionReason string
+
+const (
+	Processing    ConditionReason = "stillProcessing"
+	Processed     ConditionReason = "processed"
+	ErrorOccurred ConditionReason = "errorOccurred"
+)
+
+/* condition defines details for status condition including type, when it was updates and reason for the update
+
+	Possible condition type are -
+	SyncComplete - Set to provide update on the sync state
+	SyncFailed - Set to provide update on the sync state if failure occurred
+
+	Possible condition reason are -
+	stillProcessing - set when resources for the provided identities are getting processed
+    processed - set when all the clusters and related identity resource are processes
+    errorOccurred - set when error occurred while processing the resources, more details for which identities failed and why will be provided in failureDetails section
+*/
+type ShardStatusCondition struct {
+	Message         string          `json:"message,omitempty"`
+	Reason          ConditionReason `json:"reason,omitempty"`
+	Status          ConditionStatus `json:"status,omitempty"`
+	Type            ConditionType   `json:"type,omitempty"`
+	LastUpdatedTime metav1.Time     `json:"lastUpdateTime,omitempty"`
+}
+
+// failureDetails define details of which clusters and identities observed failures while processing resources
+type FailureDetails struct {
+	LastUpdatedTime metav1.Time     `json:"lastUpdateTime,omitempty"`
+	FailedClusters  []FailedCluster `json:"clusters,omitempty"`
+}
+
+type FailedCluster struct {
+	Name             string           `json:"name,omitempty"`
+	FailedIdentities []FailedIdentity `json:"identities,omitempty"`
+}
+
+type FailedIdentity struct {
+	Name    string `json:"name,omitempty"`
+	Message string `json:"errorMessage,omitempty"`
 }

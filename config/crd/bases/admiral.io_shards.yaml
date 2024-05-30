@@ -41,8 +41,11 @@ spec:
             properties:
               clusters:
                 items:
+                  description: |-
+                    clusters defines list of clusters monitored by the shard
+                    This includes cluster name, locality and list of cluster identities for which resources need to be managed
                   properties:
-                    assets:
+                    identities:
                       items:
                         properties:
                           environment:
@@ -51,6 +54,8 @@ spec:
                             type: string
                         type: object
                       type: array
+                    locality:
+                      type: string
                     name:
                       type: string
                   type: object
@@ -58,6 +63,65 @@ spec:
             type: object
           status:
             description: ShardStatus defines the observed state of Shard
+            properties:
+              clustersMonitored:
+                type: integer
+              conditions:
+                items:
+                  description: |-
+                    condition defines details for status condition including type, when it was updates and reason for the update
+
+
+                    Possible condition type are -
+                    SyncComplete - Set to provide update on the sync state
+                    SyncFailed - Set to provide update on the sync state if failure occurred
+
+
+                    Possible condition reason are -
+                    stillProcessing - set when resources for the provided identities are getting processed
+                    processed - set when all the clusters and related identity resource are processes
+                    errorOccurred - set when error occurred while processing the resources, more details for which identities failed and why will be provided in failureDetails section
+                  properties:
+                    lastUpdateTime:
+                      format: date-time
+                      type: string
+                    message:
+                      type: string
+                    reason:
+                      type: string
+                    status:
+                      type: string
+                    type:
+                      type: string
+                  type: object
+                type: array
+              failureDetails:
+                description: failureDetails define details of which clusters and identities
+                  observed failures while processing resources
+                properties:
+                  clusters:
+                    items:
+                      properties:
+                        identities:
+                          items:
+                            properties:
+                              errorMessage:
+                                type: string
+                              name:
+                                type: string
+                            type: object
+                          type: array
+                        name:
+                          type: string
+                      type: object
+                    type: array
+                  lastUpdateTime:
+                    format: date-time
+                    type: string
+                type: object
+              lastUpdateTime:
+                format: date-time
+                type: string
             type: object
         type: object
     served: true

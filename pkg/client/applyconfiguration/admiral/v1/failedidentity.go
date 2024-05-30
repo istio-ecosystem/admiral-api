@@ -18,31 +18,31 @@ limitations under the License.
 
 package v1
 
-// AssetItemApplyConfiguration represents an declarative configuration of the AssetItem type for use
+// FailedIdentityApplyConfiguration represents an declarative configuration of the FailedIdentity type for use
 // with apply.
-type AssetItemApplyConfiguration struct {
-	Name        *string `json:"name,omitempty"`
-	Environment *string `json:"environment,omitempty"`
+type FailedIdentityApplyConfiguration struct {
+	Name    *string `json:"name,omitempty"`
+	Message *string `json:"errorMessage,omitempty"`
 }
 
-// AssetItemApplyConfiguration constructs an declarative configuration of the AssetItem type for use with
+// FailedIdentityApplyConfiguration constructs an declarative configuration of the FailedIdentity type for use with
 // apply.
-func AssetItem() *AssetItemApplyConfiguration {
-	return &AssetItemApplyConfiguration{}
+func FailedIdentity() *FailedIdentityApplyConfiguration {
+	return &FailedIdentityApplyConfiguration{}
 }
 
 // WithName sets the Name field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Name field is set to the value of the last call.
-func (b *AssetItemApplyConfiguration) WithName(value string) *AssetItemApplyConfiguration {
+func (b *FailedIdentityApplyConfiguration) WithName(value string) *FailedIdentityApplyConfiguration {
 	b.Name = &value
 	return b
 }
 
-// WithEnvironment sets the Environment field in the declarative configuration to the given value
+// WithMessage sets the Message field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
-// If called multiple times, the Environment field is set to the value of the last call.
-func (b *AssetItemApplyConfiguration) WithEnvironment(value string) *AssetItemApplyConfiguration {
-	b.Environment = &value
+// If called multiple times, the Message field is set to the value of the last call.
+func (b *FailedIdentityApplyConfiguration) WithMessage(value string) *FailedIdentityApplyConfiguration {
+	b.Message = &value
 	return b
 }
