@@ -21,8 +21,9 @@ package v1
 // ClusterShardsApplyConfiguration represents an declarative configuration of the ClusterShards type for use
 // with apply.
 type ClusterShardsApplyConfiguration struct {
-	Name   *string                       `json:"name,omitempty"`
-	Assets []AssetItemApplyConfiguration `json:"assets,omitempty"`
+	Name       *string                          `json:"name,omitempty"`
+	Locality   *string                          `json:"locality,omitempty"`
+	Identities []IdentityItemApplyConfiguration `json:"identities,omitempty"`
 }
 
 // ClusterShardsApplyConfiguration constructs an declarative configuration of the ClusterShards type for use with
@@ -39,15 +40,23 @@ func (b *ClusterShardsApplyConfiguration) WithName(value string) *ClusterShardsA
 	return b
 }
 
-// WithAssets adds the given value to the Assets field in the declarative configuration
+// WithLocality sets the Locality field in the declarative configuration to the given value
+// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+// If called multiple times, the Locality field is set to the value of the last call.
+func (b *ClusterShardsApplyConfiguration) WithLocality(value string) *ClusterShardsApplyConfiguration {
+	b.Locality = &value
+	return b
+}
+
+// WithIdentities adds the given value to the Identities field in the declarative configuration
 // and returns the receiver, so that objects can be build by chaining "With" function invocations.
-// If called multiple times, values provided by each call will be appended to the Assets field.
-func (b *ClusterShardsApplyConfiguration) WithAssets(values ...*AssetItemApplyConfiguration) *ClusterShardsApplyConfiguration {
+// If called multiple times, values provided by each call will be appended to the Identities field.
+func (b *ClusterShardsApplyConfiguration) WithIdentities(values ...*IdentityItemApplyConfiguration) *ClusterShardsApplyConfiguration {
 	for i := range values {
 		if values[i] == nil {
-			panic("nil value passed to WithAssets")
+			panic("nil value passed to WithIdentities")
 		}
-		b.Assets = append(b.Assets, *values[i])
+		b.Identities = append(b.Identities, *values[i])
 	}
 	return b
 }

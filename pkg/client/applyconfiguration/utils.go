@@ -39,8 +39,6 @@ func ForKind(kind schema.GroupVersionKind) interface{} {
 		return &admiralv1.AssetDBApplyConfiguration{}
 	case v1.SchemeGroupVersion.WithKind("AssetDBSpec"):
 		return &admiralv1.AssetDBSpecApplyConfiguration{}
-	case v1.SchemeGroupVersion.WithKind("AssetItem"):
-		return &admiralv1.AssetItemApplyConfiguration{}
 	case v1.SchemeGroupVersion.WithKind("ClusterItem"):
 		return &admiralv1.ClusterItemApplyConfiguration{}
 	case v1.SchemeGroupVersion.WithKind("ClusterShards"):
@@ -57,10 +55,18 @@ func ForKind(kind schema.GroupVersionKind) interface{} {
 		return &admiralv1.DynamicRoutingApplyConfiguration{}
 	case v1.SchemeGroupVersion.WithKind("EdgeService"):
 		return &admiralv1.EdgeServiceApplyConfiguration{}
+	case v1.SchemeGroupVersion.WithKind("FailedCluster"):
+		return &admiralv1.FailedClusterApplyConfiguration{}
+	case v1.SchemeGroupVersion.WithKind("FailedIdentity"):
+		return &admiralv1.FailedIdentityApplyConfiguration{}
+	case v1.SchemeGroupVersion.WithKind("FailureDetails"):
+		return &admiralv1.FailureDetailsApplyConfiguration{}
 	case v1.SchemeGroupVersion.WithKind("Filter"):
 		return &admiralv1.FilterApplyConfiguration{}
 	case v1.SchemeGroupVersion.WithKind("Header"):
 		return &admiralv1.HeaderApplyConfiguration{}
+	case v1.SchemeGroupVersion.WithKind("IdentityItem"):
+		return &admiralv1.IdentityItemApplyConfiguration{}
 	case v1.SchemeGroupVersion.WithKind("Quota"):
 		return &admiralv1.QuotaApplyConfiguration{}
 	case v1.SchemeGroupVersion.WithKind("QuotaGroup"):
@@ -73,6 +79,10 @@ func ForKind(kind schema.GroupVersionKind) interface{} {
 		return &admiralv1.ShardApplyConfiguration{}
 	case v1.SchemeGroupVersion.WithKind("ShardSpec"):
 		return &admiralv1.ShardSpecApplyConfiguration{}
+	case v1.SchemeGroupVersion.WithKind("ShardStatus"):
+		return &admiralv1.ShardStatusApplyConfiguration{}
+	case v1.SchemeGroupVersion.WithKind("ShardStatusCondition"):
+		return &admiralv1.ShardStatusConditionApplyConfiguration{}
 	case v1.SchemeGroupVersion.WithKind("Target"):
 		return &admiralv1.TargetApplyConfiguration{}
 	case v1.SchemeGroupVersion.WithKind("TargetGroup"):
